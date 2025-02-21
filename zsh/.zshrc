@@ -1,5 +1,5 @@
 # Env vars
-export PATH=/opt/homebrew/opt/openssl@1.1/bin:/opt/homebrew/bin:$PATH
+export PATH=/opt/homebrew/opt/openssl@1.1/bin:/opt/homebrew/bin:/Users/dfeng/.local/bin:$PATH
 export STARSHIP_CONFIG=~/.config/starship/starship.toml
 export KUBECONFIG_DIR=~/.config/kubernetes/
 export XDG_CONFIG_HOME=~/.config/
