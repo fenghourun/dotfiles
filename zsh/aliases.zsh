@@ -27,6 +27,7 @@ alias cfg="cd ~/.config"
 
 if uname | grep -q "Darwin" ; then
   alias fpdir="cd ~/Documents/first-principles/"
+  alias redir="cd ~/Documents/recommendation-engine/"
   alias dadir="cd ~/Documents/data-analysis/"
   alias redir="cd ~/Documents/recommendation-engine/"
   alias docs="cd ~/Documents"

@@ -1,5 +1,5 @@
 # Env vars
-export PATH=/opt/homebrew/opt/openssl@1.1/bin:/opt/homebrew/bin:/Users/dfeng/.local/bin:$PATH
+export PATH=/Users/dfeng/.bun/bin:/opt/homebrew/opt/openssl@1.1/bin:/opt/homebrew/bin:/Users/dfeng/.local/bin:$PATH
 export STARSHIP_CONFIG=~/.config/starship/starship.toml
 export KUBECONFIG_DIR=~/.config/kubernetes/
 export XDG_CONFIG_HOME=~/.config/
@@ -37,14 +37,35 @@ esac
 
 # pyenv
 export PYENV_ROOT="$HOME/.pyenv"
-
 [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
 
 # postgres
 export PATH="/opt/homebrew/opt/postgresql@16/bin:$PATH"
-
 # rabbitmq
 export PATH="$PATH:/opt/homebrew/sbin/"
-
 export PATH="$HOME/.elan/bin:$PATH"
+
+# Auto venv
+auto_venv() {
+    if [ -n "$VIRTUAL_ENV" ]; then
+        # Check if we left the venv directory
+        if [ "$(dirname "$VIRTUAL_ENV")" != "$PWD" ]; then
+            echo "Deactivating venv: $(basename "$VIRTUAL_ENV")"
+            deactivate
+        fi
+    fi
+
+    # If a 'venv' directory exists, activate it
+    if [ -d ".venv" ]; then
+        echo "Activating venv: $(basename "$PWD")"
+        source .venv/bin/activate
+    fi
+}
+
+# Hook into directory change
+autoload -Uz add-zsh-hook
+add-zsh-hook chpwd auto_venv
+
+# Run once at shell start
+auto_venv
