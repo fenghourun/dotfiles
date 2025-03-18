@@ -30,6 +30,7 @@ if uname | grep -q "Darwin" ; then
   alias redir="cd ~/Documents/recommendation-engine/"
   alias dadir="cd ~/Documents/data-analysis/"
   alias redir="cd ~/Documents/recommendation-engine/"
+  alias itdir="cd ~/Documents/infra-terraform/"
   alias docs="cd ~/Documents"
 elif uname | grep -q "Linux" ; then
   alias fpdir="cd ~/documents/first-principles/"

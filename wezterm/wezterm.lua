@@ -78,7 +78,7 @@ function colors_for_appearance(appearance)
       brights = {
         "#838f9e",
         "#bc3f38",
-        "#5fa753",
+        "#e3f6d4",
         "#c49945",
         "#4578e9",
         "#906ad5",
