@@ -3,9 +3,11 @@ bpython
 direnv
 docker
 fd
+felixkratz/formulae/sketchybar
 gh
 git
 go
+helix
 luarocks
 meson
 nvm
