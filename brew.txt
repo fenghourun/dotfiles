@@ -8,6 +8,7 @@ gh
 git
 go
 helix
+jq
 luarocks
 meson
 nvm
