@@ -40,8 +40,14 @@ else
   echo 'Unknown OS!'
 fi
 
-
+# Fns
 benchmark () {
    ts '[%Y-%m-%d %H:%M:%S]'
 }
+
+# Logs 
+alias tailsketchy="tail -f /opt/homebrew/var/log/sketchybar/sketchybar.err.log"
+
+
+
 
