@@ -36,9 +36,9 @@ end
 local function colors_for_appearance(appearance)
 	if appearance:find("Dark") then
 		return {
-			background = "rgba(30, 32, 33, 0.75)",
+			background = "rgba(30, 32, 33, 0.7)",
 			tab_bar = {
-				background = "rgba(30, 32, 33, 0.75)",
+				background = "rgba(30, 32, 33, 0.7)",
 			},
 		}
 	else
