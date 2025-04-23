@@ -3,6 +3,7 @@ bpython
 direnv
 docker
 fd
+felixkratz/formulae/borders
 felixkratz/formulae/sketchybar
 gh
 git
