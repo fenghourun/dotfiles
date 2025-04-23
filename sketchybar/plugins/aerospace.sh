@@ -1,7 +1,7 @@
 #!/bin/bash
 
 if [ "$1" = "$FOCUSED_WORKSPACE" ]; then
-    sketchybar --set $NAME background.drawing=on label.highlight=on
+    sketchybar --set $NAME label.highlight=on background.drawing=on
 else
-    sketchybar --set $NAME background.drawing=off label.highlight=off
+    sketchybar --set $NAME label.highlight=off background.drawing=off
 fi

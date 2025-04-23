@@ -20,11 +20,10 @@ ITEM_DIR="$CONFIG_DIR/items"
 sketchybar --bar position=top \
                   height=30  \
                   blur_radius=30  \
-                  color=$BAR_COLOR \
+                  color=$BACKGROUND_COLOR \
                   margin=8 \
                   y_offset=5 \
-                  corner_radius=12 \
-                  notch_width=200
+                  corner_radius=12
 
 ##### Changing Defaults #####
 # We now change some default values, which are applied to all further items.
@@ -32,8 +31,8 @@ sketchybar --bar position=top \
 # https://felixkratz.github.io/SketchyBar/config/items
 
 default=(
-  padding_left=5
-  padding_right=5
+  # padding_left=5
+  # padding_right=5
   icon.font="SF Pro:Regular:14.0"
   label.font="SF Pro:Regular:14.0"
   icon.color=$WHITE
@@ -51,14 +50,6 @@ source $ITEM_DIR/calendar.sh
 source $ITEM_DIR/volume.sh
 source $ITEM_DIR/battery.sh
 source $ITEM_DIR/cpu.sh
-
-
-#### Notch ####
-# sketchybar --add item notch_spacer center
-# sketchybar --set notch_spacer width=300 \
-#                            background.drawing=off \
-#                            label.drawing=off \
-#                            icon.drawing=off
 
 #### Left Side Items ####
 source $ITEM_DIR/front_app.sh
