@@ -107,9 +107,10 @@ config.keys = {
 
 config.font_size = 18
 config.font = wezterm.font("JetBrainsMono Nerd Font")
+config.enable_tab_bar = false
 config.use_fancy_tab_bar = false
-config.line_height = 1.1
 config.tab_bar_at_bottom = true
+config.line_height = 1.1
 config.window_padding = {
 	top = 0,
 	bottom = 0,
