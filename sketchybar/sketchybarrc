@@ -17,24 +17,21 @@ ITEM_DIR="$CONFIG_DIR/items"
 # If you are looking for other colors, see the color picker:
 # https://felixkratz.github.io/SketchyBar/config/tricks#color-picker
 
-sketchybar --bar position=top \
-                  height=30  \
-                  blur_radius=30  \
-                  color=$BACKGROUND_COLOR \
-                  margin=0 \
-                  y_offset=5 \
-                  corner_radius=12 \
-                  padding_left=8 \
-                  padding_right=8
+sketchybar --bar position=top            \
+                 height=30               \
+                 blur_radius=30          \
+                 color=$BACKGROUND_COLOR \
+                 margin=0                \
+                 y_offset=5              \
+                 corner_radius=12        \
+                 padding_left=8          \
+                 padding_right=8
 
 ##### Changing Defaults #####
 # We now change some default values, which are applied to all further items.
 # For a full list of all available item properties see:
 # https://felixkratz.github.io/SketchyBar/config/items
-
 default=(
-  # padding_left=5
-  # padding_right=5
   icon.font="SF Pro:Regular:14.0"
   label.font="SF Pro:Regular:14.0"
   icon.color=$WHITE
@@ -47,20 +44,28 @@ default=(
 
 sketchybar --default "${default[@]}"
 
-#### Right Side Items ####
-source $ITEM_DIR/calendar.sh
+#### Far Left ####
+source $ITEM_DIR/front_app.sh
+
+#### Left of Notch ####
+source $ITEM_DIR/aerospace.sh
+
+#### Right of Notch ####
+source $ITEM_DIR/cpu.sh
 source $ITEM_DIR/volume.sh
 source $ITEM_DIR/battery.sh
-source $ITEM_DIR/cpu.sh
 
-sketchybar --add bracket spaces calendar cpu volume battery     \
+#### Far Right ####
+source $ITEM_DIR/calendar.sh
+
+sketchybar --add bracket spaces calendar                        \
+                                cpu                             \
+                                volume                          \
+                                batttery                        \
            --set         spaces background.color=$ITEM_BG_COLOR \
-                                background.corner_radius=12  \
+                                background.corner_radius=12     \
                                 background.height=30
 
-#### Left Side Items ####
-source $ITEM_DIR/front_app.sh
-source $ITEM_DIR/aerospace.sh
 
 ##### Force all scripts to run the first time (never do this in a script) #####
 sketchybar --update

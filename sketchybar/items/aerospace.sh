@@ -18,17 +18,17 @@ for sid in $(aerospace list-workspaces --all); do
                --subscribe "$item_name" aerospace_workspace_change
 done
 
-sketchybar --add item workspaces q                        \
-           --set      workspaces background.drawing=off   \
-                                 icon.padding_right=10    \
-                                 icon.padding_left=10     \
-                                 icon="􀢌"                 \
-                                 icon.color=$ACCENT_COLOR \
-                                 label.padding_right=0
+sketchybar --add item workspaces_icon q                        \
+           --set      workspaces_icon background.drawing=off   \
+                                      icon="􀢌"                 \
+                                      icon.color=$ACCENT_COLOR \
+                                      label.padding_right=0
 
-sketchybar --add bracket spaces_bracket workspaces "${workspace_items[@]}" \
-           --set         spaces_bracket background.color=$ITEM_BG_COLOR    \
-                                        background.corner_radius=12        \
-                                        background.height=30               \
-                                        drawing=on
+sketchybar --add bracket workspaces_bracket front_app                         \
+                                            workspaces                        \
+                                            "${workspace_items[@]}"           \
+           --set         workspaces_bracket background.color=$ITEM_BG_COLOR   \
+                                            background.corner_radius=12       \
+                                            background.height=30              \
+                                            drawing=on
 
