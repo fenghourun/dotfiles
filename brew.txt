@@ -22,6 +22,7 @@ rabbitmq
 ripgrep
 starship
 terraform
+tmux
 uv
 wget
 xdotool
