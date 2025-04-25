@@ -24,11 +24,11 @@ sketchybar --add item workspaces_icon q                        \
                                       icon.color=$ACCENT_COLOR \
                                       label.padding_right=0
 
-sketchybar --add bracket workspaces_bracket front_app                         \
-                                            workspaces                        \
-                                            "${workspace_items[@]}"           \
-           --set         workspaces_bracket background.color=$ITEM_BG_COLOR   \
-                                            background.corner_radius=12       \
-                                            background.height=30              \
+sketchybar --add bracket workspaces_bracket front_app                               \
+                                            workspaces                              \
+                                            "${workspace_items[@]}"                 \
+           --set         workspaces_bracket background.color=$ITEM_BG_COLOR         \
+                                            background.corner_radius=12             \
+                                            background.height=30                    \
                                             drawing=on
 
