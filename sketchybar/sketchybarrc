@@ -21,9 +21,11 @@ sketchybar --bar position=top \
                   height=30  \
                   blur_radius=30  \
                   color=$BACKGROUND_COLOR \
-                  margin=8 \
+                  margin=0 \
                   y_offset=5 \
-                  corner_radius=12
+                  corner_radius=12 \
+                  padding_left=8 \
+                  padding_right=8
 
 ##### Changing Defaults #####
 # We now change some default values, which are applied to all further items.
@@ -50,6 +52,11 @@ source $ITEM_DIR/calendar.sh
 source $ITEM_DIR/volume.sh
 source $ITEM_DIR/battery.sh
 source $ITEM_DIR/cpu.sh
+
+sketchybar --add bracket spaces calendar cpu volume battery     \
+           --set         spaces background.color=$ITEM_BG_COLOR \
+                                background.corner_radius=12  \
+                                background.height=30
 
 #### Left Side Items ####
 source $ITEM_DIR/front_app.sh
