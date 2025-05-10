@@ -12,7 +12,6 @@ while IFS="|" read -r app_workspace_id app_name app_details; do
 done < <(aerospace list-windows --workspace "$workspace_id")
 
 
-# Construct the label text
 if [ -z "$apps" ]; then
     label_output="$workspace_id"
 else
@@ -20,7 +19,11 @@ else
 fi
 
 if [ "$1" = "$FOCUSED_WORKSPACE" ]; then
-    sketchybar --set $NAME label.highlight=on label.font.style=Bold label.string="$label_output"
+    sketchybar --set $NAME label.highlight=on     \
+                           label.font.style=Bold
+                           # label.string="$label_output"
 else
-    sketchybar --set $NAME label.highlight=off label.font.style=Regular label.string="$label_output"
+    sketchybar --set $NAME label.highlight=off    \
+                           label.font.style=Regular 
+                         # label.string="$label_output"
 fi

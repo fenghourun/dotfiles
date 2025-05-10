@@ -17,8 +17,6 @@ for sid in $(aerospace list-workspaces --all); do
                                         click_script="aerospace workspace $sid" \
                                         script="$PLUGIN_DIR/aerospace.sh $sid"  \
                --subscribe "$item_name" aerospace_workspace_change
-    
-    apps=$(aerospace list-windows --workspace $sid | awk -F'|' '{gsub(/^ *| *$/, "", $2); print $2}')
 done
 
 sketchybar --add item workspaces_icon q                        \
