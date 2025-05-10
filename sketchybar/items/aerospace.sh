@@ -19,17 +19,6 @@ for sid in $(aerospace list-workspaces --all); do
                --subscribe "$item_name" aerospace_workspace_change
     
     apps=$(aerospace list-windows --workspace $sid | awk -F'|' '{gsub(/^ *| *$/, "", $2); print $2}')
-    icon_strip=" "
-    if [ "${apps}" != "" ]; then
-      while read -r app
-      do
-        icon_strip+=" $($CONFIG_DIR/plugins/icon_map.sh "$app")"
-      done <<< "${apps}"
-    else
-      icon_strip=" —"
-    fi
-
-    sketchybar --set space.$sid label="$sid $icon_strip"
 done
 
 sketchybar --add item workspaces_icon q                        \
