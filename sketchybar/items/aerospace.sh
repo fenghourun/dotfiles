@@ -1,11 +1,12 @@
 sketchybar --add event aerospace_workspace_change
 
 workspace_items=()
+
 for sid in $(aerospace list-workspaces --all); do
     item_name="space.$sid"
     workspace_items+=("$item_name")
 
-    sketchybar --add item  "$item_name" q                                       \
+    sketchybar --add item space.$sid q                                         \
                --set       "$item_name" background.drawing=off                  \
                                         label.highlight_color=$ACCENT_COLOR     \
                                         label.color=$WHITE                      \
@@ -16,6 +17,19 @@ for sid in $(aerospace list-workspaces --all); do
                                         click_script="aerospace workspace $sid" \
                                         script="$PLUGIN_DIR/aerospace.sh $sid"  \
                --subscribe "$item_name" aerospace_workspace_change
+    
+    apps=$(aerospace list-windows --workspace $sid | awk -F'|' '{gsub(/^ *| *$/, "", $2); print $2}')
+    icon_strip=" "
+    if [ "${apps}" != "" ]; then
+      while read -r app
+      do
+        icon_strip+=" $($CONFIG_DIR/plugins/icon_map.sh "$app")"
+      done <<< "${apps}"
+    else
+      icon_strip=" —"
+    fi
+
+    sketchybar --set space.$sid label="$sid $icon_strip"
 done
 
 sketchybar --add item workspaces_icon q                        \
