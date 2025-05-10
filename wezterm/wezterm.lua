@@ -34,59 +34,12 @@ local function scheme_for_appearance(appearance)
 end
 
 local function colors_for_appearance(appearance)
-	if appearance:find("Dark") then
-		return {
-			background = "rgba(30, 32, 33, 0.75)",
-			tab_bar = {
-				background = "rgba(30, 32, 33, 0.75)",
-			},
-		}
-	else
-		return {
-			background = "#f5f5f5",
-			foreground = "#724197",
-			cursor_fg = "#6b5792",
-			cursor_bg = "#8b8198",
-			cursor_border = "#8b8198",
-			selection_bg = "#e3f6d4",
-			selection_fg = "#724197",
-			tab_bar = {
-				background = "#c4b7d8",
-				active_tab = {
-					bg_color = "#724197",
-					fg_color = "#f5f5f5",
-				},
-				inactive_tab = {
-					bg_color = "#d6cfe2",
-					fg_color = "#323232",
-				},
-				new_tab = {
-					bg_color = "#c4b7d8",
-					fg_color = "#323232",
-				},
-			},
-			ansi = {
-				"#323232",
-				"#9d3f36",
-				"#568a37",
-				"#935f32",
-				"#5168bf",
-				"#6b5792",
-				"#59839a",
-				"#aaaaaa",
-			},
-			brights = {
-				"#838f9e",
-				"#bc3f38",
-				"#e3f6d4",
-				"#c49945",
-				"#4578e9",
-				"#906ad5",
-				"#6ca8ce",
-				"#fefefe",
-			},
-		}
-	end
+	return {
+		background = "rgba(24, 43, 38, 0.75)",
+		tab_bar = {
+			background = "rgba(24, 43, 38, 0.75)",
+		},
+	}
 end
 
 local appearance = get_appearance()
