@@ -28,13 +28,6 @@ export NVM_DIR="$HOME/.nvm/$(arch)"
 [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && . "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
 [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && . "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 
-# pnpm
-export PNPM_HOME="/Users/feng/Library/pnpm"
-case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
-esac
-
 # pyenv
 export PYENV_ROOT="$HOME/.pyenv"
 [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
@@ -42,11 +35,12 @@ eval "$(pyenv init -)"
 
 # postgres
 export PATH="/opt/homebrew/opt/postgresql@16/bin:$PATH"
+
 # rabbitmq
 export PATH="$PATH:/opt/homebrew/sbin/"
 export PATH="$HOME/.elan/bin:$PATH"
 
-# Auto venv
+# Python Auto venv
 auto_venv() {
     if [ -n "$VIRTUAL_ENV" ]; then
         # Check if we left the venv directory
@@ -69,3 +63,5 @@ add-zsh-hook chpwd auto_venv
 
 # Run once at shell start
 auto_venv
+
+fastfetch

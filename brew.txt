@@ -2,6 +2,7 @@ awscli
 bpython
 direnv
 docker
+fastfetch
 fd
 felixkratz/formulae/borders
 felixkratz/formulae/sketchybar
