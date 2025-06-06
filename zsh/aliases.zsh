@@ -26,15 +26,8 @@ alias starshipdir="cd ~/.config/starship"
 alias cfg="cd ~/.config"
 
 if uname | grep -q "Darwin" ; then
-  alias fpdir="cd ~/Documents/first-principles/"
-  alias redir="cd ~/Documents/recommendation-engine/"
-  alias dadir="cd ~/Documents/data-analysis/"
-  alias redir="cd ~/Documents/recommendation-engine/"
-  alias itdir="cd ~/Documents/infra-terraform/"
   alias docs="cd ~/Documents"
 elif uname | grep -q "Linux" ; then
-  alias fpdir="cd ~/documents/first-principles/"
-  alias dadir="cd ~/documents/data-analysis/"
   alias docs="cd ~/documents"
 else
   echo 'Unknown OS!'
