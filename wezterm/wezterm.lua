@@ -10,9 +10,9 @@ local config = wezterm.config_builder()
 
 -- For example, changing the color scheme:
 local function get_appearance()
-	if wezterm.gui then
-		return wezterm.gui.get_appearance()
-	end
+	-- if wezterm.gui then
+	-- 	return wezterm.gui.get_appearance()
+	-- end
 
 	return "Dark"
 end
