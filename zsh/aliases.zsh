@@ -8,6 +8,7 @@ alias gp="g push"
 alias gpf="g push --force"
 alias gcm="g checkout main"
 alias aliases="v ~/.config/zsh/aliases.zsh"
+alias sine="cd ~/Documents/sine"
 
 # Open config
 alias zshroot="v ~/.zshrc"
