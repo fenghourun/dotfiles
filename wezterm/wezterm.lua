@@ -10,36 +10,36 @@ local config = wezterm.config_builder()
 
 -- For example, changing the color scheme:
 local function get_appearance()
-	-- if wezterm.gui then
-	-- 	return wezterm.gui.get_appearance()
-	-- end
+  -- if wezterm.gui then
+  -- 	return wezterm.gui.get_appearance()
+  -- end
 
-	return "Dark"
+  return "Dark"
 end
 
 local function get_window_decorations()
-	if wezterm.target_triple:match("darwin") or wezterm.target_triple:match("linux") then
-		return "RESIZE"
-	else
-		return "RESIZE | TITLE"
-	end
+  if wezterm.target_triple:match("darwin") or wezterm.target_triple:match("linux") then
+    return "RESIZE"
+  else
+    return "RESIZE | TITLE"
+  end
 end
 
 local function scheme_for_appearance(appearance)
-	if appearance:find("Dark") then
-		return "Gruvbox dark, hard (base16)"
-	else
-		return "Builtin Solarized Light"
-	end
+  if appearance:find("Dark") then
+    return "Gruvbox dark, hard (base16)"
+  else
+    return "Builtin Solarized Light"
+  end
 end
 
 local function colors_for_appearance(appearance)
-	return {
-		background = "rgba(24, 43, 38, 0.75)",
-		tab_bar = {
-			background = "rgba(24, 43, 38, 0.75)",
-		},
-	}
+  return {
+    background = "rgba(24, 43, 38, 0.75)",
+    tab_bar = {
+      background = "rgba(24, 43, 38, 0.75)",
+    },
+  }
 end
 
 local appearance = get_appearance()
@@ -49,13 +49,44 @@ config.color_scheme = scheme_for_appearance(appearance)
 config.window_decorations = get_window_decorations()
 
 config.keys = {
-	{
-		key = "r",
-		mods = "CMD|SHIFT",
-		action = wezterm.action.ReloadConfiguration,
-	},
-	{ key = "k", mods = "CMD", action = wezterm.action.ScrollByLine(-1) },
-	{ key = "j", mods = "CMD", action = wezterm.action.ScrollByLine(1) },
+  {
+    key = "r",
+    mods = "CMD|SHIFT",
+    action = wezterm.action.ReloadConfiguration,
+  },
+  { key = "k", mods = "CMD", action = wezterm.action.ScrollByLine(-1) },
+  { key = "j", mods = "CMD", action = wezterm.action.ScrollByLine(1) },
+  {
+    key = '|',
+    mods = 'CMD|SHIFT',
+    action = wezterm.action.SplitHorizontal { domain = 'CurrentPaneDomain' },
+  },
+  {
+    key = '-',
+    mods = 'CMD|SHIFT',
+    action = wezterm.action.SplitVertical { domain = 'CurrentPaneDomain' },
+  },
+  {
+    key = 'h',
+    mods = 'CMD|SHIFT',
+    action = wezterm.action.ActivatePaneDirection('Left'),
+  },
+  -- Add more keybindings for other directions (j, k, l) as needed
+  {
+    key = 'j',
+    mods = 'CMD|SHIFT',
+    action = wezterm.action.ActivatePaneDirection('Down'),
+  },
+  {
+    key = 'k',
+    mods = 'CMD|SHIFT',
+    action = wezterm.action.ActivatePaneDirection('Up'),
+  },
+  {
+    key = 'l',
+    mods = 'CMD|SHIFT',
+    action = wezterm.action.ActivatePaneDirection('Right'),
+  }
 }
 
 config.font_size = 18
@@ -65,18 +96,18 @@ config.use_fancy_tab_bar = false
 config.tab_bar_at_bottom = true
 config.line_height = 1.1
 config.window_padding = {
-	top = 0,
-	bottom = 0,
-	right = 0,
-	left = 0,
+  top = 0,
+  bottom = 0,
+  right = 0,
+  left = 0,
 }
 
 local function get_default_domain()
-	if wezterm.target_triple:match("darwin") or wezterm.target_triple:match("linux") then
-		return nil
-	else
-		return "WSL:Ubuntu"
-	end
+  if wezterm.target_triple:match("darwin") or wezterm.target_triple:match("linux") then
+    return nil
+  else
+    return "WSL:Ubuntu"
+  end
 end
 config.default_domain = get_default_domain()
 
