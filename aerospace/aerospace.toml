@@ -97,7 +97,6 @@ outer.right = 8
 #     activate
 # end tell'
 # '''
-
 # See: https://nikitabobko.github.io/AeroSpace/commands#layout
 alt-slash = 'layout tiles horizontal vertical'
 alt-comma = 'layout accordion horizontal vertical'
@@ -162,3 +161,15 @@ alt-shift-h = ['join-with left', 'mode main']
 alt-shift-j = ['join-with down', 'mode main']
 alt-shift-k = ['join-with up', 'mode main']
 alt-shift-l = ['join-with right', 'mode main']
+
+[[on-window-detected]]
+  if.app-id = 'com.apple.finder'
+  run = 'layout floating'
+
+[[on-window-detected]]
+  if.app-id = 'com.apple.ActivityMonitor'
+  run = 'layout floating'
+
+[[on-window-detected]]
+  if.app-id = 'net.ankiweb.launcher'
+  run = 'layout floating'
