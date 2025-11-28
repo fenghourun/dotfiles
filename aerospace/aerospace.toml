@@ -163,13 +163,25 @@ alt-shift-k = ['join-with up', 'mode main']
 alt-shift-l = ['join-with right', 'mode main']
 
 [[on-window-detected]]
-  if.app-id = 'com.apple.finder'
-  run = 'layout floating'
+if.app-id = 'com.apple.finder'
+run = 'layout floating'
 
 [[on-window-detected]]
-  if.app-id = 'com.apple.ActivityMonitor'
-  run = 'layout floating'
+if.app-id = 'com.apple.ActivityMonitor'
+run = 'layout floating'
 
 [[on-window-detected]]
-  if.app-id = 'net.ankiweb.launcher'
-  run = 'layout floating'
+if.app-id = 'com.apple.MobileSMS'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-id = 'com.apple.Passwords'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-id = 'com.apple.TextEdit'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-id = 'net.ankiweb.launcher'
+run = 'layout floating'
