@@ -43,6 +43,8 @@ local function colors_for_appearance(appearance)
 end
 
 local appearance = get_appearance()
+config.max_fps = 240
+config.animation_fps = 240
 config.colors = colors_for_appearance(appearance)
 config.color_scheme = scheme_for_appearance(appearance)
 
@@ -89,7 +91,7 @@ config.keys = {
   }
 }
 
-config.font_size = 18
+config.font_size = 15
 config.font = wezterm.font("JetBrainsMono Nerd Font")
 config.enable_tab_bar = false
 config.use_fancy_tab_bar = false
