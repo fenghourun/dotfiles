@@ -4,13 +4,36 @@
 # Inserts a blank line between shell prompts
 add_newline = true
 
+# format = """
+# [╭─](bold green)$username in $directory$git_branch$git_status$bun$rust$kubernetes$python$aws$time$cmd_duration
+# [╰─](bold green)$character """
+
 format = """
-[╭─](bold green)$username in $directory$git_branch$git_status$bun$rust$kubernetes$python$aws$time$cmd_duration
-[╰─](bold green)$character """
+[░▒▓](#a3aed2)\
+[  ](bg:#a3aed2 fg:#090c0c)\
+[](bg:#769ff0 fg:#a3aed2)\
+$directory\
+[](fg:#769ff0 bg:#394260)\
+$git_branch\
+$git_status\
+[](fg:#394260 bg:#212736)\
+$bun\
+$rust\
+$python\
+[](fg:#212736 bg:#1d2230)\
+$time\
+[ ](fg:#1d2230)\
+\n$character"""
 
 # Full path
+# [directory]
+# truncation_length = 0
+
 [directory]
-truncation_length = 0
+style = "fg:#e3e5e5 bg:#769ff0"
+format = "[ $path ]($style)"
+truncation_length = 3
+truncation_symbol = "…/"
 
 [username]
 format = " [$user]($style)"
@@ -19,10 +42,19 @@ format = " [$user]($style)"
 format = '\[[$symbol($profile)(\($region\))(\[$duration\])]($style)\]'
 
 [git_branch]
-format = '\[[$symbol$branch]($style)\]'
+symbol = ""
+style = "bg:#394260"
+format = '[[ $symbol $branch ](fg:#769ff0 bg:#394260)]($style)'
 
 [git_status]
-format = '([\[$all_status$ahead_behind\]]($style))'
+style = "bg:#394260"
+format = '[[($all_status$ahead_behind )](fg:#769ff0 bg:#394260)]($style)'
+
+# [git_branch]
+# format = '\[[$symbol$branch]($style)\]'
+#
+# [git_status]
+# format = '([\[$all_status$ahead_behind\]]($style))'
 
 [haskell]
 format = '\[[$symbol($version)]($style)\]'
@@ -37,14 +69,22 @@ format = '\[[$symbol($version)]($style)\]'
 format = '\[[$symbol($version)]($style)\]'
 
 [python]
-format = '\[[${symbol}${pyenv_prefix}(${version})(\($virtualenv\))]($style)\]'
+style = "fg:#769ff0 bg:#212736"
+format = '[[ ${symbol} ${pyenv_prefix}(${version})( \($virtualenv\))](fg:#769ff0 bg:#212736)]($style)'
 
 [rust]
-format = '\[[$symbol($version)]($style)\]'
+style = "bg:#212736"
+format = '[[ $symbol ($version) ](fg:#769ff0 bg:#212736)]($style)'
 
 [kubernetes]
 format = '\[[⛵ on ($cluster)](green) \]'
 
+# [time]
+# disabled = false
+# format = ' --[ $time ]($style)'
+
 [time]
 disabled = false
-format = ' --[ $time ]($style)'
+time_format = "%R" # Hour:Minute Format
+style = "bg:#1d2230"
+format = '[[  $time ](fg:#a0a9cb bg:#1d2230)]($style)'
