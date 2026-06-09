@@ -2,7 +2,6 @@
 wslu/*
 systemd/*
 gh/hosts.yml
-nvim
 turborepo
 iterm2
 qBittorrent
