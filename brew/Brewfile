@@ -3,7 +3,6 @@ tap "homebrew/services"
 tap "felixkratz/formulae"
 tap "nikitabobko/tap"
 tap "oven-sh/bun"
-tap "zegervdv/zathura"
 
 # Core CLI
 brew "git"
@@ -12,48 +11,28 @@ brew "wget"
 brew "ripgrep"
 brew "fd"
 brew "jq"
-brew "direnv"
 brew "tmux"
 brew "starship"
 brew "fastfetch"
-brew "yazi"
 
 # Editors
 brew "neovim"
 brew "helix"
 
 # Languages / runtimes
-brew "python@3.12"
-brew "bpython"
 brew "pyenv"
 brew "uv"
 brew "nvm"
-brew "go"
-brew "openjdk"
 brew "oven-sh/bun/bun"
 
-# Build / libs
+# Libs in PATH
 brew "openssl@3"
-brew "openblas"
-brew "luarocks"
-brew "meson"
-
-# Cloud / infra
-brew "awscli"
-brew "terraform"
-brew "docker"
-brew "postgresql@14", restart_service: true
-brew "rabbitmq", restart_service: true
 
 # Window management / status bar (macOS)
 brew "felixkratz/formulae/sketchybar"
 brew "felixkratz/formulae/borders"
-brew "xdotool"
-
-# Document viewer
-brew "zegervdv/zathura/girara"
 
 cask "aerospace"
+cask "wezterm"
 cask "neovide"
-cask "basictex"
-cask "julia"
+cask "sf-symbols"
