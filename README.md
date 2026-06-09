@@ -85,10 +85,42 @@ brew bundle dump --force --file=~/.config/brew/Brewfile
 git -C ~/.config diff brew/Brewfile     # prune anything you don't want, then commit
 ```
 
+## Submodules
+
+Plugins and the neovim config are git submodules, each pinned to a specific
+commit:
+
+| Submodule | Repo |
+|-----------|------|
+| `nvim` | `fenghourun/nvim` |
+| `zsh/plugins/*` | zsh-autosuggestions, zsh-syntax-highlighting, zsh-vi-mode |
+| `tmux/plugins/*` | tpm, vim-tmux-navigator |
+
+**Get / refresh them** (also part of `install.sh`):
+
+```sh
+git -C ~/.config submodule update --init --recursive
+```
+
+**Pull the latest upstream commit** for a submodule and bump the pin here:
+
+```sh
+git -C ~/.config submodule update --remote nvim   # fast-forward nvim to its latest master
+cd ~/.config && git add nvim && git commit -m "bump nvim" && git push
+```
+
+**Editing the neovim config** (its own repo lives at `~/.config/nvim`): commit
+in the submodule first, then record the new pin in this repo:
+
+```sh
+cd ~/.config/nvim && git add -p && git commit -m "..." && git push   # 1. push nvim changes
+cd ~/.config && git add nvim && git commit -m "bump nvim" && git push  # 2. bump the pin in dotfiles
+```
+
 ## Notes
 
 - **Local / machine-specific files** are git-ignored and never committed:
-  see `.gitignore` (e.g. `gh/hosts.yml` auth, `git/`, `nvim`, work devserver
+  see `.gitignore` (e.g. `gh/hosts.yml` auth, `git/`, work devserver
   artifacts matching `*.ash0`). They stay on disk; git just doesn't track them.
 - **Apple Silicon** is assumed (`/opt/homebrew`). On Intel, change
   `BREW_PREFIX` in `install.sh` to `/usr/local`.
