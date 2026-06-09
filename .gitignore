@@ -8,3 +8,9 @@ iterm2
 qBittorrent
 github-copilot/
 prisma-platform-cli/
+
+# Local-only / machine-specific
+git/
+
+# Work devserver artifacts (never commit to public repo)
+*.ash0
