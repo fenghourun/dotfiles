@@ -2,7 +2,6 @@ tap "homebrew/bundle"
 tap "homebrew/services"
 tap "felixkratz/formulae"
 tap "nikitabobko/tap"
-tap "oven-sh/bun"
 
 # Core CLI
 brew "git"
@@ -17,13 +16,10 @@ brew "fastfetch"
 
 # Editors
 brew "neovim"
-brew "helix"
 
 # Languages / runtimes
 brew "pyenv"
 brew "uv"
-brew "nvm"
-brew "oven-sh/bun/bun"
 
 # Libs in PATH
 brew "openssl@3"
@@ -34,5 +30,4 @@ brew "felixkratz/formulae/borders"
 
 cask "aerospace"
 cask "wezterm"
-cask "neovide"
 cask "sf-symbols"
