@@ -1,5 +1,3 @@
-tap "homebrew/bundle"
-tap "homebrew/services"
 tap "felixkratz/formulae"
 tap "nikitabobko/tap"
 
