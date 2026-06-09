@@ -1,5 +1,5 @@
 # Env vars
-export PATH=/Users/dfeng/.bun/bin:/opt/homebrew/opt/openssl@1.1/bin:/opt/homebrew/bin:/Users/dfeng/.local/bin:$PATH
+export PATH=$HOME/.bun/bin:/opt/homebrew/opt/openssl@3/bin:/opt/homebrew/bin:$HOME/.local/bin:$PATH
 export STARSHIP_CONFIG=~/.config/starship/starship.toml
 export KUBECONFIG_DIR=~/.config/kubernetes/
 export XDG_CONFIG_HOME=~/.config/
@@ -31,10 +31,10 @@ export NVM_DIR="$HOME/.nvm/$(arch)"
 # pyenv
 export PYENV_ROOT="$HOME/.pyenv"
 [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
+command -v pyenv >/dev/null 2>&1 && eval "$(pyenv init -)"
 
 # postgres
-export PATH="/opt/homebrew/opt/postgresql@16/bin:$PATH"
+export PATH="/opt/homebrew/opt/postgresql@14/bin:$PATH"
 
 # rabbitmq
 export PATH="$PATH:/opt/homebrew/sbin/"
@@ -64,4 +64,4 @@ add-zsh-hook chpwd auto_venv
 # Run once at shell start
 auto_venv
 
-fastfetch
+command -v fastfetch >/dev/null 2>&1 && fastfetch

@@ -13,3 +13,11 @@
 [submodule "zsh-vi-mode"]
   path = "zsh/plugins/zsh-vi-mode"
   url = https://github.com/jeffreytse/zsh-vi-mode.git
+
+[submodule "tpm"]
+  path = "tmux/plugins/tpm"
+  url = https://github.com/tmux-plugins/tpm.git
+
+[submodule "vim-tmux-navigator"]
+  path = "tmux/plugins/vim-tmux-navigator"
+  url = https://github.com/christoomey/vim-tmux-navigator.git
