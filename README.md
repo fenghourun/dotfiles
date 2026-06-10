@@ -137,6 +137,9 @@ left off.
   `tmux/tmux.conf` to `~/.config/tmux/plugins/`), so **no `~/.tmux` symlink** is
   needed — the in-repo submodules just work.
 
+> Handing this to Claude on the devserver? Paste **[`DEVSERVER.md`](DEVSERVER.md)** —
+> it's a self-contained setup + usage brief for the remote.
+
 ### Remote / Linux setup (non-intrusive, in-place)
 
 **Don't run `install.sh` here** — it's macOS-only (Homebrew, sketchybar,
