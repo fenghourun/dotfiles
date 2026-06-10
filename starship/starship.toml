@@ -11,6 +11,7 @@ add_newline = true
 format = """
 [░▒▓](#8ec07c)\
 [  ](bg:#8ec07c fg:#090c0c)\
+$hostname\
 [](bg:#83a598 fg:#8ec07c)\
 $directory\
 [](fg:#83a598 bg:#394260)\
@@ -88,3 +89,10 @@ disabled = false
 time_format = "%R" # Hour:Minute Format
 style = "bg:#1d2230"
 format = '[[  $time ](fg:#a0a9cb bg:#1d2230)]($style)'
+
+[hostname]
+ssh_only = true          # only render when connected over SSH (i.e. devserver)
+ssh_symbol = "🌐 "
+trim_at = "."            # drop the domain, keep just the host name
+style = "fg:#090c0c bg:#8ec07c"
+format = "[ $ssh_symbol$hostname ]($style)"
