@@ -117,6 +117,55 @@ cd ~/.config/nvim && git add -p && git commit -m "..." && git push   # 1. push n
 cd ~/.config && git add nvim && git commit -m "bump nvim" && git push  # 2. bump the pin in dotfiles
 ```
 
+## Devserver / tmux
+
+The dev flow is `ssh devserver` → work inside one persistent **tmux** session
+(neovim in one window/pane, shells in others). The session lives on the
+*server*, so disconnects don't lose work — reconnect and you're back where you
+left off.
+
+- On an **SSH login** the shell auto-runs `tmux new-session -A -s main`
+  (see `zsh/.zshrc`), so you always land in the persistent `main` session. The
+  guard only fires over SSH and when not already inside tmux — local macOS
+  shells are unaffected.
+- Prefix is **`C-a`**. Common keys: `C-a |` / `C-a -` split, `C-a c` new window,
+  `C-a d` detach (leaves everything running), `C-a h/j/k/l` resize,
+  `C-a r` reload. `C-h/j/k/l` (no prefix) moves between neovim splits and tmux
+  panes via vim-tmux-navigator.
+- Reattach manually after a detach/disconnect with `tmux attach -t main`.
+- tpm finds its plugins via the `TMUX_PLUGIN_MANAGER_PATH` env var (set in
+  `tmux/tmux.conf` to `~/.config/tmux/plugins/`), so **no `~/.tmux` symlink** is
+  needed — the in-repo submodules just work.
+
+### Remote / Linux setup (non-intrusive, in-place)
+
+**Don't run `install.sh` here** — it's macOS-only (Homebrew, sketchybar,
+AeroSpace). On a remote where `~/.config` may already contain unrelated,
+pre-existing files, adopt the repo *in place* instead: this touches only the
+files this repo tracks and **leaves everything else alone** (git never deletes
+untracked files on checkout).
+
+```sh
+cd ~/.config
+git init -q
+git remote add origin https://github.com/fenghourun/dotfiles.git
+git fetch origin main -q
+git checkout -f -B main origin/main         # overwrites only tracked files; anything else is untouched
+git branch --set-upstream-to=origin/main main -q
+git submodule update --init --recursive     # tmux + zsh plugins
+
+# Keep pre-existing files out of `git status` (and out of accidental commits) by
+# marking everything currently untracked as locally excluded. .git/info/exclude
+# is per-clone and never committed, so the repo itself stays clean.
+git status --porcelain | sed -n 's/^?? //p' >> .git/info/exclude
+
+# Wire the shell (only if not already sourced):
+grep -qs 'source ~/.config/zsh/.zshrc' ~/.zshrc || echo 'source ~/.config/zsh/.zshrc' >> ~/.zshrc
+```
+
+Then `exec zsh` (or reconnect) — the SSH auto-attach drops you into tmux.
+To update later: `cd ~/.config && git pull && git submodule update --init --recursive`.
+
 ## Notes
 
 - **Local / machine-specific files** are git-ignored and never committed:

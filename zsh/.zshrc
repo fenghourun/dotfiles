@@ -7,6 +7,14 @@ export PGUSER=feng
 export PGDATABASE=main
 export HOMEBREW_BUNDLE_FILE=~/.config/brew/Brewfile
 
+# Auto-attach to tmux on remote (devserver) SSH logins only.
+# Joins the persistent "main" session, creating it if needed. Detach with C-a d.
+# Guards: tmux installed, this is an SSH session, not already inside tmux,
+# and the shell is interactive.
+if command -v tmux >/dev/null 2>&1 && [ -n "$SSH_CONNECTION" ] && [ -z "$TMUX" ] && [[ $- == *i* ]]; then
+  exec tmux new-session -A -s main
+fi
+
 # Initialize starship
 eval "$(starship init zsh)"
 
