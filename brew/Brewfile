@@ -29,3 +29,7 @@ brew "felixkratz/formulae/borders"
 cask "aerospace"
 cask "wezterm"
 cask "sf-symbols"
+
+# Fonts (referenced by wezterm/wezterm.lua font_with_fallback)
+cask "font-jetbrains-mono-nerd-font"   # primary terminal font
+cask "font-juliamono"                  # math/arrow glyph fallback (e.g. U+27F9 ⟹)

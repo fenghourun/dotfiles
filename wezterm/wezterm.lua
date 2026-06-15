@@ -124,7 +124,14 @@ config.keys = {
 }
 
 config.font_size = 15
-config.font = wezterm.font("JetBrainsMono Nerd Font")
+-- JetBrainsMono Nerd Font lacks some math/arrow glyphs (e.g. U+27F9 ⟹,
+-- "Supplemental Arrows-C"). JuliaMono is monospace with full math/arrow
+-- coverage, so it fills the cell cleanly. Apple Symbols is omitted on purpose:
+-- macOS CoreText already pulls it in as a system last-resort fallback.
+config.font = wezterm.font_with_fallback({
+  "JetBrainsMono Nerd Font",
+  "JuliaMono",
+})
 config.enable_tab_bar = true
 config.use_fancy_tab_bar = false
 config.tab_bar_at_bottom = true
