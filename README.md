@@ -11,7 +11,7 @@ them (`~/.config/<app>/...`), and the shell is bootstrapped by a one-line
 |------|------|
 | `zsh/` | zsh config, aliases, vendored plugins (submodules) |
 | `starship/` | prompt |
-| `tmux/` | tmux config + plugins (tpm, vim-tmux-navigator) |
+| `tmux/` | tmux config + plugins (tpm) |
 | `wezterm/` | terminal |
 | `aerospace/` | tiling window manager |
 | `sketchybar/` + `borders` | status bar + window borders |
@@ -94,7 +94,7 @@ commit:
 |-----------|------|
 | `nvim` | `fenghourun/nvim` |
 | `zsh/plugins/*` | zsh-autosuggestions, zsh-syntax-highlighting, zsh-vi-mode |
-| `tmux/plugins/*` | tpm, vim-tmux-navigator |
+| `tmux/plugins/*` | tpm |
 
 **Get / refresh them** (also part of `install.sh`):
 
@@ -129,9 +129,9 @@ left off.
   guard only fires over SSH and when not already inside tmux — local macOS
   shells are unaffected.
 - Prefix is **`C-a`**. Common keys: `C-a |` / `C-a -` split, `C-a c` new window,
-  `C-a d` detach (leaves everything running), `C-a h/j/k/l` resize,
-  `C-a r` reload. `C-h/j/k/l` (no prefix) moves between neovim splits and tmux
-  panes via vim-tmux-navigator.
+  `C-a d` detach (leaves everything running), `C-a h/j/k/l` switch panes,
+  `C-a` + arrows resize, `C-a r` reload. Neovim splits are navigated separately
+  with the built-in `C-w h/j/k/l`.
 - Reattach manually after a detach/disconnect with `tmux attach -t main`.
 - tpm finds its plugins via the `TMUX_PLUGIN_MANAGER_PATH` env var (set in
   `tmux/tmux.conf` to `~/.config/tmux/plugins/`), so **no `~/.tmux` symlink** is
