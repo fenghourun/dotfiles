@@ -6,7 +6,7 @@
 alias v="nvim"
 alias nv="neovide --frame transparent --fork"
 alias g="git"
-alias cl="claude --dangerously-allow-all"
+alias cl="claude --dangerously-skip-permissions"
 alias grm="g fetch && g reset --hard origin/main"
 alias gp="g push"
 alias gpf="g push --force"
