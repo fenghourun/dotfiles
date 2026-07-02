@@ -14,6 +14,7 @@ brew "fastfetch"
 
 # Editors
 brew "neovim"
+brew "tree-sitter"   # nvim-treesitter (main branch) shells out to this CLI to build parsers + queries
 
 # Languages / runtimes
 brew "pyenv"
