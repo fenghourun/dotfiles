@@ -12,7 +12,7 @@ them (`~/.config/<app>/...`), and the shell is bootstrapped by a one-line
 | `zsh/` | zsh config, aliases, vendored plugins (submodules) |
 | `starship/` | prompt |
 | `tmux/` | tmux config + plugins (tpm) |
-| `wezterm/` | terminal |
+| `wezterm/`, `kitty/` | terminal (kitty mirrors the wezterm look & keybinds) |
 | `aerospace/` | tiling window manager |
 | `sketchybar/` + `borders` | status bar + window borders |
 | `helix/`, `neovide/`, `htop/`, `yazi`-style configs | misc tools |
