@@ -13,6 +13,7 @@ alias gpf="g push --force"
 alias gcm="g checkout main"
 alias aliases="v $XDG_CONFIG_HOME/zsh/aliases.zsh"
 alias sine="cd ~/Documents/sine"
+alias ssh='kitten ssh'
 
 # Open config
 alias zshroot="v ~/.zshrc"
