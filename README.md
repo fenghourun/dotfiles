@@ -15,7 +15,7 @@ them (`~/.config/<app>/...`), and the shell is bootstrapped by a one-line
 | `wezterm/` | terminal |
 | `aerospace/` | tiling window manager |
 | `sketchybar/` + `borders` | status bar + window borders |
-| `helix/`, `neovide/`, `fastfetch/`, `htop/`, `yazi`-style configs | misc tools |
+| `helix/`, `neovide/`, `htop/`, `yazi`-style configs | misc tools |
 | `brew/Brewfile` | the canonical package list (`HOMEBREW_BUNDLE_FILE`) |
 
 Plugins are git **submodules** (`zsh/plugins/*`, `tmux/plugins/*`).

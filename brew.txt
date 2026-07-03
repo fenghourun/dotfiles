@@ -1,2 +1,0 @@
-# Package list consolidated into brew/Brewfile (canonical; used by HOMEBREW_BUNDLE_FILE).
-# Install everything with:  brew bundle --file=~/.config/brew/Brewfile

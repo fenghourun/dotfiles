@@ -10,7 +10,6 @@ brew "fd"
 brew "jq"
 brew "tmux"
 brew "starship"
-brew "fastfetch"
 
 # Editors
 brew "neovim"

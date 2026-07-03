@@ -14,3 +14,6 @@ git/
 
 # Work devserver artifacts (never commit to public repo)
 *.ash0
+
+# Homebrew runtime artifacts
+homebrew/
