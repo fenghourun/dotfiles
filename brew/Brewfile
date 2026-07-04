@@ -9,6 +9,7 @@ brew "ripgrep"
 brew "fd"
 brew "jq"
 brew "tmux"
+brew "mosh"          # resilient SSH: survives laptop sleep, IP changes, and flaky wifi
 brew "starship"
 
 # Editors
