@@ -7,11 +7,13 @@ export PGUSER=feng
 export PGDATABASE=main
 export HOMEBREW_BUNDLE_FILE=~/.config/brew/Brewfile
 
-# Auto-attach to tmux on remote (devserver) SSH logins only.
+# Auto-attach to tmux on remote (devserver) SSH/mosh logins only.
 # Joins the persistent "main" session, creating it if needed. Detach with C-a d.
-# Guards: tmux installed, this is an SSH session, not already inside tmux,
-# and the shell is interactive.
-if command -v tmux >/dev/null 2>&1 && [ -n "$SSH_CONNECTION" ] && [ -z "$TMUX" ] && [[ $- == *i* ]]; then
+# Guards: tmux installed, not already inside tmux, the shell is interactive,
+# and this is a remote session. mosh doesn't set $SSH_CONNECTION, so also
+# detect a mosh-server parent process.
+if command -v tmux >/dev/null 2>&1 && [ -z "$TMUX" ] && [[ $- == *i* ]] \
+   && { [ -n "$SSH_CONNECTION" ] || ps -o comm= -p "$PPID" 2>/dev/null | grep -q mosh; }; then
   exec tmux new-session -A -s main
 fi
 
