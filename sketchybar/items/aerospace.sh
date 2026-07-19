@@ -30,6 +30,6 @@ sketchybar --add bracket workspaces_bracket front_app                           
                                             "${workspace_items[@]}"                 \
            --set         workspaces_bracket background.color=$ITEM_BG_COLOR         \
                                             background.corner_radius=12             \
-                                            background.height=30                    \
+                                            background.height=28                    \
                                             drawing=on
 

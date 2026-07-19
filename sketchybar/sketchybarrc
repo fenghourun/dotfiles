@@ -61,10 +61,10 @@ source $ITEM_DIR/calendar.sh
 sketchybar --add bracket spaces calendar                        \
                                 cpu                             \
                                 volume                          \
-                                batttery                        \
+                                battery                         \
            --set         spaces background.color=$ITEM_BG_COLOR \
                                 background.corner_radius=12     \
-                                background.height=30            
+                                background.height=28
 
 
 ##### Force all scripts to run the first time (never do this in a script) #####
