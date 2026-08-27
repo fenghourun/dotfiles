@@ -10,11 +10,28 @@ export HOMEBREW_BUNDLE_FILE=~/.config/brew/Brewfile
 # Auto-attach to tmux on remote (devserver) SSH/mosh logins only.
 # Joins the persistent "main" session, creating it if needed. Detach with C-a d.
 # Guards: tmux installed, not already inside tmux, the shell is interactive,
-# and this is a remote session. mosh doesn't set $SSH_CONNECTION, so also
-# detect a mosh-server parent process.
-if command -v tmux >/dev/null 2>&1 && [ -z "$TMUX" ] && [[ $- == *i* ]] \
+# stdin/stdout are a real terminal, and this is a remote session. mosh doesn't
+# set $SSH_CONNECTION, so also detect a mosh-server parent process.
+#
+# The -t checks matter: $- says "interactive", not "has a tty". Tools that run
+# an interactive shell without a pty (VS Code Remote-SSH bootstrap, some
+# scp/rsync paths) would otherwise reach tmux, which dies with the misleading
+# "open terminal failed: not a terminal".
+#
+# Never `exec` tmux. If tmux can't start -- no tty, or a stale server whose
+# binary was replaced by an upgrade -- exec leaves no shell to fall back to and
+# the login ends in "Session terminated", locking you out of the host. Run it
+# as a child instead and keep a plain zsh if it fails.
+# Set TMUX_NO_AUTOATTACH=1 to skip this entirely for one login.
+if command -v tmux >/dev/null 2>&1 && [ -z "$TMUX" ] && [ -z "$TMUX_NO_AUTOATTACH" ] \
+   && [[ $- == *i* ]] && [ -t 0 ] && [ -t 1 ] \
    && { [ -n "$SSH_CONNECTION" ] || ps -o comm= -p "$PPID" 2>/dev/null | grep -q mosh; }; then
-  exec tmux new-session -A -s main
+  if tmux new-session -A -s main; then
+    exit          # normal detach (C-a d) ends the login, matching the old exec
+  else
+    print -u2 "⚠️  tmux auto-attach failed (exit $?) — continuing in plain zsh."
+    print -u2 "   Stale server? ls -la /proc/\$(pgrep -u \"\$USER\" -x -o tmux)/exe"
+  fi
 fi
 
 # Initialize starship
