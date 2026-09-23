@@ -60,9 +60,8 @@ fi
 log "Installing Homebrew packages"
 brew bundle install --file="$CONFIG/brew/Brewfile"
 
-# 6. Services (status bar + window borders) --------------------------------
+# 6. Service (status bar) ---------------------------------------------------
 log "Starting services"
 brew services start sketchybar 2>/dev/null || true
-brew services start borders   2>/dev/null || true
 
 log "Done. Open AeroSpace.app, then restart your terminal or run: exec zsh"

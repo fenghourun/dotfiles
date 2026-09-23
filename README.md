@@ -14,7 +14,7 @@ them (`~/.config/<app>/...`), and the shell is bootstrapped by a one-line
 | `tmux/` | tmux config + plugins (tpm) |
 | `wezterm/`, `kitty/` | terminal (kitty mirrors the wezterm look & keybinds) |
 | `aerospace/` | tiling window manager |
-| `sketchybar/` + `borders` | status bar + window borders |
+| `sketchybar/` | status bar, including the currently focused app |
 | `helix/`, `neovide/`, `htop/`, `yazi`-style configs | misc tools |
 | `brew/Brewfile` | the canonical package list (`HOMEBREW_BUNDLE_FILE`) |
 
@@ -35,7 +35,7 @@ The script (`install.sh`) is idempotent and:
 4. wires `~/.zshrc` (`source ~/.config/zsh/.zshrc`) and `~/.zprofile`
    (`brew shellenv`),
 5. runs `brew bundle`,
-6. starts the `sketchybar` and `borders` services.
+6. starts the `sketchybar` service.
 
 Then open **AeroSpace.app** and restart the terminal (`exec zsh`).
 
@@ -59,11 +59,14 @@ Because `~/.config` is the working tree, day-to-day use is plain git.
 **Pull the latest config onto this machine:**
 
 ```sh
-cd ~/.config
-git pull
-git submodule update --init --recursive   # in case plugins changed
-brew bundle install --file=~/.config/brew/Brewfile   # sync packages
+cfg_sync
 ```
+
+`cfg_sync` fast-forwards the config repo, initializes its pinned submodules,
+upgrades all Brewfile packages on macOS, restores Neovim plugins from
+`lazy-lock.json`, and reloads AeroSpace and SketchyBar. It is safe to run again;
+uncommitted changes that conflict with an incoming update stop the pull rather
+than being overwritten.
 
 (Re-running `bash ~/.config/install.sh` does all of the above too.)
 
