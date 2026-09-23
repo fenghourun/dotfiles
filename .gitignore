@@ -11,6 +11,10 @@ prisma-platform-cli/
 
 # Local-only / machine-specific
 git/
+/3pai/
+/google-chrome/
+/harbor/
+/muse/
 
 # Work devserver artifacts (never commit to public repo)
 *.ash0
