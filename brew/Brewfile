@@ -21,6 +21,8 @@ brew "bun"
 brew "node"
 brew "pyenv"
 brew "uv"
+brew "lua"
+brew "luarocks"
 
 # Python CLI tools managed reproducibly through uv
 uv "pre-commit"
