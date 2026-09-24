@@ -1,10 +1,8 @@
 # Env vars
-export PATH=$HOME/.bun/bin:/opt/homebrew/opt/openssl@3/bin:/opt/homebrew/bin:$HOME/.local/bin:$PATH
+export PATH=/opt/homebrew/opt/openssl@3/bin:/opt/homebrew/bin:$HOME/.local/bin:$PATH
 export STARSHIP_CONFIG=~/.config/starship/starship.toml
 export KUBECONFIG_DIR=~/.config/kubernetes/
 export XDG_CONFIG_HOME=~/.config/
-export PGUSER=feng
-export PGDATABASE=main
 export HOMEBREW_BUNDLE_FILE=~/.config/brew/Brewfile
 
 # Auto-attach to tmux on remote (devserver) SSH/mosh logins only.
@@ -31,24 +29,13 @@ source ~/.config/zsh/plugins/zsh-vi-mode/zsh-vi-mode.plugin.zsh
 # Binds
 # bindkey '^I'      autosuggest-accept
 
-# This will separate NPM & NVM between x86 and arm64, to avoid mixing package and dependency architectures (recipe for disaster)
+# Keep npm caches separate between x86 and arm64.
 export npm_config_cache="$HOME/.npm/$(arch)"
-
-export NVM_DIR="$HOME/.nvm/$(arch)"
-[ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && . "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
-[ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && . "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 
 # pyenv
 export PYENV_ROOT="$HOME/.pyenv"
 [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
 command -v pyenv >/dev/null 2>&1 && eval "$(pyenv init -)"
-
-# postgres
-export PATH="/opt/homebrew/opt/postgresql@14/bin:$PATH"
-
-# rabbitmq
-export PATH="$PATH:/opt/homebrew/sbin/"
-export PATH="$HOME/.elan/bin:$PATH"
 
 # Python Auto venv
 auto_venv() {
@@ -73,5 +60,3 @@ add-zsh-hook chpwd auto_venv
 
 # Run once at shell start
 auto_venv
-
-command -v fastfetch >/dev/null 2>&1 && fastfetch

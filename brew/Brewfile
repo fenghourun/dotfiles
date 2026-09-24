@@ -17,20 +17,23 @@ brew "neovim"
 brew "tree-sitter"   # nvim-treesitter (main branch) shells out to this CLI to build parsers + queries
 
 # Languages / runtimes
+brew "bun"
+brew "node"
 brew "pyenv"
 brew "uv"
+
+# Python CLI tools managed reproducibly through uv
+uv "pre-commit"
 
 # Libs in PATH
 brew "openssl@3"
 
 # Window management / status bar (macOS)
-brew "felixkratz/formulae/sketchybar"
+brew "felixkratz/formulae/sketchybar", trusted: true
 
-cask "aerospace"
-cask "wezterm"
+cask "nikitabobko/tap/aerospace", trusted: true
 cask "kitty"
-cask "sf-symbols"
 
-# Fonts (referenced by wezterm/wezterm.lua + kitty/kitty.conf)
+# Fonts used by kitty/kitty.conf
 cask "font-jetbrains-mono-nerd-font"   # primary terminal font
 cask "font-juliamono"                  # math/arrow glyph fallback (e.g. U+27F9 ⟹)

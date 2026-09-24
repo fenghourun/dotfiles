@@ -12,10 +12,9 @@ them (`~/.config/<app>/...`), and the shell is bootstrapped by a one-line
 | `zsh/` | zsh config, aliases, vendored plugins (submodules) |
 | `starship/` | prompt |
 | `tmux/` | tmux config + plugins (tpm) |
-| `wezterm/`, `kitty/` | terminal (kitty mirrors the wezterm look & keybinds) |
+| `kitty/` | terminal |
 | `aerospace/` | tiling window manager |
 | `sketchybar/` | status bar, including the currently focused app |
-| `helix/`, `neovide/`, `htop/`, `yazi`-style configs | misc tools |
 | `brew/Brewfile` | the canonical package list (`HOMEBREW_BUNDLE_FILE`) |
 
 Plugins are git **submodules** (`zsh/plugins/*`, `tmux/plugins/*`).
@@ -64,9 +63,10 @@ cfg_sync
 
 `cfg_sync` fast-forwards the config repo, initializes its pinned submodules,
 upgrades all Brewfile packages on macOS, restores Neovim plugins from
-`lazy-lock.json`, and reloads AeroSpace and SketchyBar. It is safe to run again;
-uncommitted changes that conflict with an incoming update stop the pull rather
-than being overwritten.
+`lazy-lock.json`, removes retired/orphaned Homebrew packages and old versions,
+and reloads AeroSpace and SketchyBar. It is safe to run again; uncommitted
+changes that conflict with an incoming update stop the pull rather than being
+overwritten.
 
 (Re-running `bash ~/.config/install.sh` does all of the above too.)
 

@@ -4,7 +4,6 @@
 : "${XDG_CONFIG_HOME:=$HOME/.config}"
 
 alias v="nvim"
-alias nv="neovide --frame transparent --fork"
 alias g="git"
 alias cl="claude --dangerously-skip-permissions"
 alias grm="g fetch && g reset --hard origin/main"
@@ -25,8 +24,6 @@ alias fdignore="v $XDG_CONFIG_HOME/fd/ignore/.fdignore"
 
 # Goto config
 alias vimdir="cd $XDG_CONFIG_HOME/nvim"
-alias wezdir="cd $XDG_CONFIG_HOME/wezterm"
-alias nvdir="cd $XDG_CONFIG_HOME/neovide"
 alias zshdir="cd $XDG_CONFIG_HOME/zsh"
 alias starshipdir="cd $XDG_CONFIG_HOME/starship"
 alias cfg="cd $XDG_CONFIG_HOME"
@@ -59,12 +56,27 @@ cfg_sync() {
     command brew update || return 1
     command brew bundle install --file="$config_dir/brew/Brewfile" || return 1
 
-    # One-time migration for machines that previously used jankyborders.
-    if command brew list --formula borders >/dev/null 2>&1; then
-      print "==> Removing retired jankyborders dependency"
-      command brew services stop borders >/dev/null 2>&1 || true
-      command brew uninstall borders || return 1
-    fi
+    local formula cask
+    for formula in borders lua; do
+      if command brew list --formula "$formula" >/dev/null 2>&1; then
+        print "==> Removing retired formula: $formula"
+        if [[ "$formula" == borders ]]; then
+          command brew services stop borders >/dev/null 2>&1 || true
+        fi
+        command brew uninstall "$formula" || return 1
+      fi
+    done
+
+    for cask in wezterm sf-symbols; do
+      if command brew list --cask "$cask" >/dev/null 2>&1; then
+        print "==> Removing retired cask: $cask"
+        command brew uninstall --cask "$cask" || return 1
+      fi
+    done
+
+    print "==> Removing unused Homebrew dependencies and old versions"
+    command brew autoremove || return 1
+    command brew cleanup || return 1
   fi
 
   if (( $+commands[nvim] )); then
@@ -95,5 +107,3 @@ benchmark () {
 
 # Logs 
 alias tailsketchy="tail -f /opt/homebrew/var/log/sketchybar/sketchybar.err.log"
-
-

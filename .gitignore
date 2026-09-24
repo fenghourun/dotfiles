@@ -22,3 +22,7 @@ git/
 
 # Homebrew runtime artifacts
 homebrew/
+
+# Tool-generated, machine-specific install receipts
+uv/uv-receipt.json
+fish/conf.d/uv.env.fish
