@@ -17,7 +17,7 @@ them (`~/.config/<app>/...`), and the shell is bootstrapped by a one-line
 | `sketchybar/` | status bar, including the currently focused app |
 | `brew/Brewfile` | the canonical package list (`HOMEBREW_BUNDLE_FILE`) |
 
-Plugins are git **submodules** (`zsh/plugins/*`, `tmux/plugins/*`).
+Plugins, the Neovim config, and the Obsidian vault are git **submodules**.
 
 ## Install on a new machine
 
@@ -90,12 +90,13 @@ git -C ~/.config diff brew/Brewfile     # prune anything you don't want, then co
 
 ## Submodules
 
-Plugins and the neovim config are git submodules, each pinned to a specific
-commit:
+Plugins, the Neovim config, and the Obsidian vault are git submodules, each
+pinned to a specific commit:
 
 | Submodule | Repo |
 |-----------|------|
 | `nvim` | `fenghourun/nvim` |
+| `obsidian` | `fenghourun/obsidian` |
 | `zsh/plugins/*` | zsh-autosuggestions, zsh-syntax-highlighting, zsh-vi-mode |
 | `tmux/plugins/*` | tpm |
 

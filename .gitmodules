@@ -21,3 +21,6 @@
 [submodule "nvim"]
 	path = nvim
 	url = https://github.com/fenghourun/nvim.git
+[submodule "obsidian"]
+	path = obsidian
+	url = https://github.com/fenghourun/obsidian.git

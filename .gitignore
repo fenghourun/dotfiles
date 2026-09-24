@@ -16,7 +16,6 @@ git/
 /google-chrome/
 /harbor/
 /muse/
-/obsidian/
 
 # Work devserver artifacts (never commit to public repo)
 *.ash0
