@@ -56,24 +56,6 @@ cfg_sync() {
     command brew update || return 1
     command brew bundle install --file="$config_dir/brew/Brewfile" || return 1
 
-    local formula cask
-    for formula in borders lua; do
-      if command brew list --formula "$formula" >/dev/null 2>&1; then
-        print "==> Removing retired formula: $formula"
-        if [[ "$formula" == borders ]]; then
-          command brew services stop borders >/dev/null 2>&1 || true
-        fi
-        command brew uninstall "$formula" || return 1
-      fi
-    done
-
-    for cask in wezterm; do
-      if command brew list --cask "$cask" >/dev/null 2>&1; then
-        print "==> Removing retired cask: $cask"
-        command brew uninstall --cask "$cask" || return 1
-      fi
-    done
-
     print "==> Removing unused Homebrew dependencies and old versions"
     command brew autoremove || return 1
     command brew cleanup || return 1
