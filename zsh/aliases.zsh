@@ -27,6 +27,7 @@ alias vimdir="cd $XDG_CONFIG_HOME/nvim"
 alias zshdir="cd $XDG_CONFIG_HOME/zsh"
 alias starshipdir="cd $XDG_CONFIG_HOME/starship"
 alias cfg="cd $XDG_CONFIG_HOME"
+alias obs="cd $XDG_CONFIG_HOME/obsidian"
 
 # Bring this machine in line with the tracked dotfiles and dependency locks.
 # Homebrew Bundle upgrades Brewfile entries by default; Lazy restore keeps
