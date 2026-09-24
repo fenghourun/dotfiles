@@ -32,6 +32,8 @@ sketchybar --bar position=top            \
 # For a full list of all available item properties see:
 # https://felixkratz.github.io/SketchyBar/config/items
 default=(
+  # These icons are SF Symbols private-use glyphs. The sf-symbols Homebrew cask
+  # must remain installed or they fall back to missing-glyph boxes.
   icon.font="SF Pro:Regular:14.0"
   label.font="SF Pro:Regular:14.0"
   icon.color=$WHITE

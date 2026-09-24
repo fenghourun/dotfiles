@@ -67,7 +67,7 @@ cfg_sync() {
       fi
     done
 
-    for cask in wezterm sf-symbols; do
+    for cask in wezterm; do
       if command brew list --cask "$cask" >/dev/null 2>&1; then
         print "==> Removing retired cask: $cask"
         command brew uninstall --cask "$cask" || return 1

@@ -33,6 +33,10 @@ brew "felixkratz/formulae/sketchybar", trusted: true
 
 cask "nikitabobko/tap/aerospace", trusted: true
 cask "kitty"
+cask "obsidian"
+# Required by SketchyBar: its private-use icon glyphs render through the SF Pro
+# fonts installed with this package. Removing it produces question-mark boxes.
+cask "sf-symbols"
 
 # Fonts used by kitty/kitty.conf
 cask "font-jetbrains-mono-nerd-font"   # primary terminal font
